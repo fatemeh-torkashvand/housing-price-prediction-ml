@@ -1,86 +1,62 @@
-#data files 
-*.csv
-*.xlsx
-*.xls
-*.pkl
-*.pickle
-*.h5
-*.hdf5
-*.json
-*.parquet
-*.feather
-#python cache
-pycache/
-*.pyc
-*.pyo
-*.pyd
+__pycache__/
+*.py[cod]
 *.so
-*.dll
-*.dylib
+.ipynb_checkpoints/
+*.ipynb_checkpoints
 
-#virtual env
+*.ipynb-meta
+
 venv/
 env/
-.env/
 .venv/
-virtualenv/
-pyenv/
-pythonenv*
-
-#Notebook files
-.ipynb_checkpoints/
-*.ipynb_checkpoints*
-checkpoints/
-*.swp
-*.swo
-
-#Logs & Debug
-*.log
-logs/
-tmp/
-
-#  outputs
-/output/
-/plots/
-*.png
-*.jpg
-*.jpeg
-*.gif
-
-
-# System files
-.DS_Store
-Thumbs.db
-desktop.ini
-ehthumbs.db
+ENV/
+env.bak/
+venv.bak/
 
 .vscode/
+*.code-workspace
+
+# PyCharm / IntelliJ
 .idea/
 *.iml
-*.iws
-*.ipr
-*.swp
-.project
-.classpath
-.settings/
 
-.pytest_cache/
-.coverage
-htmlcov/
-.tox/
-.mypy_cache/
-.dmypy.json
-dmypy.json
+# Spyder
+.spyproject/
 
-dist/
-build/
-*.egg-info/
-*.egg
-MANIFEST
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
 
-*.env
+*.log
+*.sqlite
+*.sqlite3
+*.db
+
+
+.env
+.env.local
+.env.*.local
 *.secret
-*.key
-*.pem
-config.local.py
-secrets.py
+secrets.yaml
+config.yaml.local
+
+*.pkl.cache
+*.npy
+*.npz
+*.feather
+*.parquet
+
+*.tmp
+*.temp
+*.backup
+
+
+*.swp
+*.swo
+*~
+*.orig

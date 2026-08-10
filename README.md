@@ -1,26 +1,54 @@
-🏠 California Housing Price Prediction
+پیش‌بینی قیمت مسکن – پروژه‌ی ماشین‌لرنینگ
 
-پیش‌بینی قیمت مسکن کالیفرنیا با استفاده از الگوریتم‌های رگرسیون و پردازش داده‌های واقعی سرشماری.
+یک رگرسیون برای پیش‌بینی قیمت متوسط خانه‌ها در مناطق کالیفرنیا، بر اساس دیتاست California Housing. این پروژه شامل پاک‌سازی داده، برخورد با داده‌های پرت، ارزیابی مدل‌ها، تنظیم هایپرپارامتر و ذخیره‌سازی مدل نهایی است.
+_دیتاست
 
-📌 The project summary
-
-· هدف: پیش‌بینی median_house_value با داده‌های ۲۰,۶۴۰ بلوک مسکونی کالیفرنیا
-· ابزارها: Python, Pandas, Scikit-learn, Matplotlib, Seaborn
-· فرایند:
-  · جای‌گذاری مقادیر گمشده با KNN Imputer
-  · شناسایی و محدودسازی نقاط پرت (IQR Capping)
-  · مقیاس‌سازی با StandardScaler
-  · مقایسه‌ی ۶ مدل رگرسیونی
+· منبع: فایل housing.csv
+· هدف (Target): median_house_value
+· تعداد نمونه: ۲۰,۶۴۰ رکورد با ۹ ویژگی (شامل طول و عرض جغرافیایی)
 
 
-🏆 Best model
+_پیش‌ پردازش داده
 
-· مدل: Random Forest
-· R²: 0.8306
-· RMSE: 46,532
-· MAE: 31,295
+· مقادیر گم‌شده – با استفاده از KNNImputer (با ۵ همسایه) برای ستون total_bedrooms پر شده‌اند.
+· مدیریت داده‌های پرت – با روش IQR، سه ستون زیر کیپ (cap) شده‌اند:
+  · median_house_value
+  · median_income
+  · housing_median_age
+  · scaling –
+
+_ مدل‌های ارزیابی‌شده
+
+همه‌ی مدل‌ها با اعتبارسنجی متقابل ۵‑لایه روی مجموعه‌ی آموزش ارزیابی شدند:
+
+1.Linear Regression
+2.Rodge Regression
+3.Lasso Regressin
+4.Decision Tree
+5. Random Forest
+6. (KNN)
 
 
-📈 Evaluation
+_ تنظیم هیپرپارامتر
 
-مدل‌های مبتنی بر درخت (Random Forest) به‌طور قابل‌توجهی از مدل‌های خطی (R² ≈ 0.65) بهتر عمل کردند که نشان‌دهنده‌ی وجود روابط غیرخطی در داده‌های مسکن است.
+دو مدل برتر با RandomizedSearchCV بهینه‌سازی شدند:
+
+· Random Forest – بهترین پارامترها:
+    n_estimators=150, min_samples_split=5, min_samples_leaf=2, max_depth=None
+· KNN – بهترین پارامترها:
+    n_neighbors=7, weights='distance', p=1 
+
+_ عملکرد نهایی روی مجموعه‌ی آزمون
+
+مدل ضریب تعیین (R²)
+جنگل تصادفی ۰٫۸۱۴۰
+KNN ۰٫۷۲۰۷
+
+تمام نتایج اعتبارسنجی متقابل (شامل RMSE و MAE) داخل نوت‌بوک ثبت شده‌اند.
+
+_ مدل‌های ذخیره‌شده
+
+پس از بهینه‌سازی، هر دو مدل نهایی با joblib ذخیره شده‌اند:
+
+· best_rf_model.pkl
+· best_knn_model.pkl
